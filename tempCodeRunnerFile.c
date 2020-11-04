@@ -7,8 +7,7 @@ int main()
     cls();
     hidecursor();
     printMenu();
-    int menu = 1;
-    while (menu)
+    while (1)
     {
 
         if (kbhit())
@@ -16,19 +15,16 @@ int main()
             cls();
             printMenu();
             char k = getkey();
-            switch (k)
+            if (k == '3')
             {
-            case '3':
                 cls();
                 printCreditos();
                 anykey("Pressione qualquer tecla para voltar\n");
                 cls();
                 printMenu();
-                break;
-            case '4':
-                menu = 0;
-                break;
-            default:
+            }
+            if (k == '4')
+            {
                 break;
             }
         }
