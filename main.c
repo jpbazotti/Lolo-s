@@ -40,8 +40,12 @@ int main()
                 break;
                 //seta gamestate para o save
             case '2':
+                cls();
                 printSave();
-                gameState = getSave();
+                printf("\nEscolha um save\n");
+                k=getkey();
+                printf("%d\n",(int)k-48);
+                gameState = getSave((int)k-48);
                 game = 1;
                 break;
             case '3':
@@ -60,7 +64,7 @@ int main()
             //loop do jogo
             while (game)
             {
-
+                game=0;
             }
         }
     }

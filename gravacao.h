@@ -64,3 +64,18 @@ void printSave()
         fclose(file);
     }
 }
+
+gravacao getSave(int pos){
+	FILE *file;
+	gravacao save;
+	if(!(file = fopen("save.bin","rb"))){
+		printf("Nao ha save file! Pressione um botao para continuar\n");
+	}else{
+	fseek(file, (pos-1)*sizeof(gravacao),SEEK_SET);
+	if(fread(&save, sizeof(gravacao), 1, file) == 1){
+		printf("Iniciando Jogo\n");
+	}
+	fclose(file);
+	}
+	return save;
+}
