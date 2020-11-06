@@ -27,5 +27,7 @@ int getLast(){
 		printf("Erro de leitura!\n");
 	}
 	fseek(file, 0, SEEK_END);
-	return ftell(file)/sizeof(gravacao);
+	int pos = ftell(file)/sizeof(gravacao);
+	fclose(file);
+	return pos;
 }
