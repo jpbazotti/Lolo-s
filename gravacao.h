@@ -20,3 +20,12 @@ void geraGravacao(gravacao save){
 	}
 	fclose(file);
 }
+
+int getLast(){
+	File *file;
+	if(!(file = fopen("save.bin","rb"))){
+		printf("Erro de leitura!\n");
+	}
+	fseek(file, 0, SEEK_END);
+	return ftell(file)/sizeof(gravacao);
+}
