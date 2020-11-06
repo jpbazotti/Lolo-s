@@ -1,6 +1,8 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <string.h>
 //struc gravacao
-typedef struct {
+typedef struct
+{
 	int id;
 	int totalpts;
 	int ultimafase;
@@ -8,26 +10,57 @@ typedef struct {
 	char nomejogador[9];
 } gravacao;
 
-
 //salva os dados do player
-void geraGravacao(gravacao save){
+void geraGravacao(gravacao save)
+{
 	FILE *file;
-	if(!(file = fopen("save.bin","ab"))){
+	if (!(file = fopen("save.bin", "ab")))
+	{
 		printf("Erro de leitura!\n");
 	}
-	if (fwrite(&save, sizeof(gravacao), 1, file) != 1){
+	if (fwrite(&save, sizeof(gravacao), 1, file) != 1)
+	{
 		printf("Erro de escrita!\n");
 	}
 	fclose(file);
 }
 
-int getLast(){
-	File *file;
-	if(!(file = fopen("save.bin","rb"))){
-		printf("Erro de leitura!\n");
+//pega o ultimo id usado
+int getLast()
+{
+	FILE *file;
+	int pos = 0;
+	if (!(file = fopen("save.bin", "rb")))
+	{
+		pos = 0;
 	}
-	fseek(file, 0, SEEK_END);
-	int pos = ftell(file)/sizeof(gravacao);
-	fclose(file);
-	return pos;
+	else
+	{
+		fseek(file, 0, SEEK_END);
+		pos = ftell(file) / sizeof(gravacao);
+		fclose(file);
+	}
+	return pos+1;
+}
+//imprime os saves para selecao
+void printSave()
+{
+    FILE *file;
+    if (!(file = fopen("save.bin", "rb")))
+    {
+        printf("Erro na abertura do arquivo para leitura");
+    }
+    else
+    {
+        gravacao buffer;
+        while (!feof(file))
+        {
+
+            if (fread(&buffer, sizeof(gravacao), 1, file) == 1)
+            {
+                printf("\n%d-Jogador:%s Nivel:%d", buffer.id,buffer.nomejogador,buffer.ultimafase);
+            }
+        }
+        fclose(file);
+    }
 }

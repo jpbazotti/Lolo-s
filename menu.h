@@ -12,7 +12,7 @@ void printCreditos(){
      printf("Izaias Saturnino De Lima Neto\n");
      printf("Joao Pedro Lopes Bazotti\n");
 }
-
+//imprime a interface
 void printInterface(int vidas, int pontos, int nivel){
      printf("=================================");
      printf("|Vidas: %d  Pontos: %d  Nivel:%d|");
