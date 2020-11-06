@@ -1,4 +1,5 @@
 #include<stdio.h>
+//struc gravacao
 typedef struct {
 	int id;
 	int totalpts;
@@ -7,6 +8,8 @@ typedef struct {
 	char nomejogador[9];
 } gravacao;
 
+
+//salva os dados do player
 void geraGravacao(gravacao save){
 	FILE *file;
 	if(!(file = fopen("save.bin","ab"))){

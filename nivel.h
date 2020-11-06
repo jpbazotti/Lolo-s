@@ -1,6 +1,5 @@
 #include <stdio.h>
-//definicao de structs nivel e ponto
-
+//definicao de struct ponto
 
 typedef struct 
 {
@@ -8,7 +7,7 @@ typedef struct
     int y;
 }ponto_st ;
 
-
+//desenha na tela o nivel em seu estado atual
 
 void imprime_nivel(char nivel[][13]){
    int i;
@@ -21,6 +20,7 @@ void imprime_nivel(char nivel[][13]){
         }
     }
 
+//carrega o nivel de um arquivo txt
 
 ponto_st carrega_nivel(char nivel[][13], char arquivo[20]){
     FILE *data;

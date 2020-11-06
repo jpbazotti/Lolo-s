@@ -7,8 +7,9 @@ int main()
     cls();
     hidecursor();
     printMenu();
-    int menu = 1;
-    while (menu)
+    int loop = 1;
+    //loop principal
+    while (loop)
     {
 
         if (kbhit())
@@ -26,7 +27,7 @@ int main()
                 printMenu();
                 break;
             case '4':
-                menu = 0;
+                loop = 0;
                 break;
             default:
                 break;
