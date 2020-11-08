@@ -3,4 +3,8 @@
 typedef struct {
 	ponto_st posicao;
     int coracoes;
-} player;
+} player_st;
+
+void movePlayer(char nivel[][13],player_st p){
+    
+}

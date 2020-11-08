@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include "nivel.h"
 #include "menu.h"
 #include "rlutil.h"
 #include "gravacao.h"
+#include "player.h"
+
 int main()
 {
     cls();
@@ -11,6 +12,8 @@ int main()
     int loop = 1;
     int game = 0;
     char nome[9];
+    char level[13][13];
+    player_st jogador;
     //loop principal
     while (loop)
     {
@@ -43,9 +46,9 @@ int main()
                 cls();
                 printSave();
                 printf("\nEscolha um save\n");
-                k=getkey();
-                printf("%d\n",(int)k-48);
-                gameState = getSave((int)k-48);
+                k = getkey();
+                printf("%d\n", (int)k - 48);
+                gameState = getSave((int)k - 48);
                 game = 1;
                 break;
             case '3':
@@ -64,7 +67,13 @@ int main()
             //loop do jogo
             while (game)
             {
-                game=0;
+                jogador.posicao = loadLevel(level, chooseLevel(gameState.ultimafase));
+                cls();
+                printInterface(gameState.vidas,gameState.totalpts,gameState.ultimafase);
+                printLevel(level);
+                anykey("Pressione qualquer tecla para voltar\n");
+
+                game = 0;
             }
         }
     }
