@@ -44,8 +44,8 @@ int main()
                 //seta gamestate para o save
             case '2':
                 cls();
+                printf("Escolha um save:\n");
                 printSave();
-                printf("\nEscolha um save\n");
                 k = getkey();
                 printf("%d\n", (int)k - 48);
                 gameState = getSave((int)k - 48);
@@ -69,10 +69,11 @@ int main()
             {
                 if (!loaded)
                 {
+                    jogador.coracoes = 0;
                     jogador.posicao = loadLevel(level, chooseLevel(gameState.ultimafase));
                     loaded = 1;
                     cls();
-                    printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase);
+                    printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase, jogador.coracoes);
                     printLevel(level);
                 }
 
@@ -81,7 +82,7 @@ int main()
                     char move = getkey();
                     cls();
                     jogador = movePlayer(level, jogador, move, &gameState);
-                    printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase);
+                    printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase, jogador.coracoes);
                     printLevel(level);
                     if (jogador.posicao.x == -1)
                     {
@@ -89,6 +90,10 @@ int main()
                         loaded = 0;
                         cls();
                         printMenu();
+                    }
+                    if (jogador.posicao.x == -2){
+                        loaded = 0;
+                        cls();
                     }
                 }
             }

@@ -58,7 +58,7 @@ void printSave()
 
             if (fread(&buffer, sizeof(gravacao), 1, file) == 1)
             {
-                printf("\n%d-Jogador:%s Nivel:%d", buffer.id,buffer.nomejogador,buffer.ultimafase);
+                printf("%d-Jogador:%s Nivel:%d\n", buffer.id,buffer.nomejogador,buffer.ultimafase);
             }
         }
         fclose(file);

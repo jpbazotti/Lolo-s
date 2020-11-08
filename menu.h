@@ -13,8 +13,9 @@ void printCreditos(){
      printf("Joao Pedro Lopes Bazotti\n");
 }
 //imprime a interface
-void printInterface(int vidas, int pontos, int nivel){
-     printf("===================================\n");
-     printf("|Vidas: %2d  Pontos: %3d  Nivel:%2d |\n",vidas,pontos,nivel);
-     printf("===================================\n");
+void printInterface(int vidas, int pontos, int nivel, int coracoes){
+     printf("=================================================\n");
+     printf("|Vidas: %2d  Coracoes: %2d  Pontos: %3d  Nivel:%2d |\n",vidas,coracoes,pontos,nivel);
+     printf("=================================================\n");
 }
+//char nome[], int id
