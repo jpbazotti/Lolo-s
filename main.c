@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "menu.h"
 #include "rlutil.h"
-#include "gravacao.h"
 #include "player.h"
 
 int main()
@@ -13,6 +12,7 @@ int main()
     int game = 0;
     char nome[9];
     char level[13][13];
+    int loaded = 0;
     player_st jogador;
     //loop principal
     while (loop)
@@ -67,13 +67,30 @@ int main()
             //loop do jogo
             while (game)
             {
-                jogador.posicao = loadLevel(level, chooseLevel(gameState.ultimafase));
-                cls();
-                printInterface(gameState.vidas,gameState.totalpts,gameState.ultimafase);
-                printLevel(level);
-                anykey("Pressione qualquer tecla para voltar\n");
+                if (!loaded)
+                {
+                    jogador.posicao = loadLevel(level, chooseLevel(gameState.ultimafase));
+                    loaded = 1;
+                    cls();
+                    printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase);
+                    printLevel(level);
+                }
 
-                game = 0;
+                if (kbhit())
+                {
+                    char move = getkey();
+                    cls();
+                    jogador = movePlayer(level, jogador, move, &gameState);
+                    printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase);
+                    printLevel(level);
+                    if (jogador.posicao.x == -1)
+                    {
+                        game = 0;
+                        loaded = 0;
+                        cls();
+                        printMenu();
+                    }
+                }
             }
         }
     }

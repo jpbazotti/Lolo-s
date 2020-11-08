@@ -47,8 +47,8 @@ ponto_st loadLevel(char nivel[][13], char arquivo[20])
                 nivel[contador][i] = getc(data);
                 if (nivel[contador][i] == '@')
                 {
-                    player.x = contador;
-                    player.y = i;
+                    player.y = contador;
+                    player.x = i;
                 }
             }
             getc(data);
