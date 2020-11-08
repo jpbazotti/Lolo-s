@@ -86,7 +86,8 @@ void changeSave(gravacao save){
 	{
 		printf("Erro de leitura!\n");
 	}
-	if (fwrite(&save, sizeof(gravacao)*(save.id-1), 1, file) != 1)
+	fseek(file, (save.id-1)*sizeof(gravacao), SEEK_SET);
+	if (fwrite(&save, sizeof(gravacao), 1, file) != 1)
 	{
 		printf("Erro de escrita!\n");
 	}
