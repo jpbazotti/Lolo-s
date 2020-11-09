@@ -27,12 +27,13 @@ enemy* getEnemies(char nivel[][13]){
 	return enemies;
 }
 
+//x e y estao invertidos mas nao faz diferenca para a logica do programa
 void moveEnemies(char nivel[][13]){
 	srand(time(NULL));
 	enemy enemies[] = getEnemies(nivel);
 	int qtd = sizeof(enemies)/sizeof(enemy);
 	int i = 0;
-	int move = -1;
+	int move = 0;
 	ponto_st novaPos;
 	for (i = 0; i < qtd; i++){
 		if(enemies[i].movimento == 1){
