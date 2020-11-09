@@ -13,6 +13,8 @@ int main()
     char nome[9];
     char level[13][13];
     int loaded = 0;
+    int saveChoice=0;
+    int pontosInicio=0;
     player_st jogador;
     //loop principal
     while (loop)
@@ -46,9 +48,10 @@ int main()
                 cls();
                 printf("Escolha um save:\n");
                 printSave();
-                k = getkey();
-                printf("%d\n", (int)k - 48);
-                gameState = getSave((int)k - 48);
+                showcursor();
+                scanf("%d",&saveChoice);
+                gameState = getSave(saveChoice);
+                hidecursor();
                 game = 1;
                 break;
             case '3':
@@ -72,6 +75,7 @@ int main()
                     jogador.coracoes = 0;
                     jogador.posicao = loadLevel(level, chooseLevel(gameState.ultimafase));
                     loaded = 1;
+                    pontosInicio=gameState.totalpts;
                     cls();
                     printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase, jogador.coracoes);
                     printLevel(level);
@@ -81,7 +85,7 @@ int main()
                 {
                     char move = getkey();
                     cls();
-                    jogador = movePlayer(level, jogador, move, &gameState);
+                    jogador = movePlayer(level, jogador, move, &gameState, pontosInicio);
                     printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase, jogador.coracoes);
                     printLevel(level);
                     if (jogador.posicao.x == -1)
