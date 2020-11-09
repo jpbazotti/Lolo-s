@@ -1,2 +1,1 @@
-
-                    if (jogador.posicao.x == -2){
+                    changeSave(gameState);

@@ -82,11 +82,12 @@ gravacao getSave(int pos){
 
 void changeSave(gravacao save){
 	FILE *file;
-	if (!(file = fopen("save.bin", "wb")))
+	printf("%d ",save.id);
+	if (!(file = fopen("save.bin", "r+b")))
 	{
 		printf("Erro de leitura!\n");
 	}
-	fseek(file, (save.id-1)*sizeof(gravacao), SEEK_SET);
+	fseek(file, (((save.id)-1) * sizeof(gravacao)), SEEK_SET);
 	if (fwrite(&save, sizeof(gravacao), 1, file) != 1)
 	{
 		printf("Erro de escrita!\n");
