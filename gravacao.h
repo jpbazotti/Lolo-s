@@ -82,7 +82,6 @@ gravacao getSave(int pos){
 
 void changeSave(gravacao save){
 	FILE *file;
-	printf("%d ",save.id);
 	if (!(file = fopen("save.bin", "r+b")))
 	{
 		printf("Erro de leitura!\n");

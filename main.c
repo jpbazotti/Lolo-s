@@ -79,6 +79,8 @@ int main()
                     cls();
                     printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase, jogador.coracoes);
                     printLevel(level);
+                    printf("%s",gameState.nomejogador);
+                    changeSave(gameState);
                 }
 
                 if (kbhit())
@@ -88,6 +90,7 @@ int main()
                     jogador = movePlayer(level, jogador, move, &gameState, pontosInicio);
                     printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase, jogador.coracoes);
                     printLevel(level);
+                    printf("%s",gameState.nomejogador);
                     if (jogador.posicao.x == -1)
                     {
                         game = 0;
