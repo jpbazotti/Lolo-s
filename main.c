@@ -1,3 +1,4 @@
+//Nomes:Izaias Saturnino de Lima Neto e Joao Pedro Lopes Bazotti
 #include <stdio.h>
 #include "menu.h"
 #include "rlutil.h"
@@ -72,14 +73,24 @@ int main()
                     printMenu();
                 }
                 break;
+                //imprime os controles
             case '3':
+                cls();
+                printControls();
+                anykey("Pressione qualquer tecla para voltar\n");
+                cls();
+                printMenu();
+                break;
+                //imprime os creditos
+            case '4':
                 cls();
                 printCreditos();
                 anykey("Pressione qualquer tecla para voltar\n");
                 cls();
                 printMenu();
                 break;
-            case '4':
+                //sai do jogo
+            case '5':
                 loop = 0;
                 break;
             default:
@@ -88,6 +99,7 @@ int main()
             //loop do jogo
             while (game)
             {
+                //carrega o nivel
                 if (!loaded)
                 {
                     jogador.coracoes = 0;
@@ -119,6 +131,7 @@ int main()
                     printInterface(gameState.vidas, gameState.totalpts, gameState.ultimafase, jogador.coracoes);
                     printLevel(level);
                     printf("Nome: %s", gameState.nomejogador);
+                    //checks de transicao
                     if (jogador.posicao.x == -1)
                     {
                         game = 0;
@@ -145,7 +158,9 @@ int main()
                         anykey("\nPressione qualquer tecla para continuar");
                         loaded = 0;
                         cls();
-                    }else if(jogador.posicao.x == -3&&gameState.ultimafase!=4){
+                    }
+                    else if (jogador.posicao.x == -3 && gameState.ultimafase != 4)
+                    {
                         cls();
                         printf("Voce passou de nivel!");
                         anykey("\nPressione qualquer tecla para continuar e salvar");

@@ -1,11 +1,11 @@
 PPPPPPPPPPPPP
 PPPPP   B  PP
-PPC P @ PPPPP
+PP  P @ PCPPP
 P        PPPP
 P       A   P
 P     T     P
 PPBP E E    P
 PP PP   PPBPP
-P   B   PP PP
-PPCPP   PP PP
+P   B   PP CP
+PPPPP   PP PP
 PPPPPPPPPPPPP
