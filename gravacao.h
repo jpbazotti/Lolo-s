@@ -65,6 +65,8 @@ void printSave()
     }
 }
 
+
+//pega save pelo id
 gravacao getSave(int pos){
 	FILE *file;
 	gravacao save;
@@ -80,6 +82,7 @@ gravacao getSave(int pos){
 	return save;
 }
 
+//sobscreeve o save 
 void changeSave(gravacao save){
 	FILE *file;
 	if (!(file = fopen("save.bin", "r+b")))

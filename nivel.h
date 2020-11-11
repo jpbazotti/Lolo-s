@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+
+#ifndef nivel_h
+#define nivel_h
 //definicao de struct ponto
 
 typedef struct
@@ -24,6 +27,32 @@ void printLevel(char nivel[][13])
     }
 }
 
+//esconde o bau e retorna sua posicao
+ponto_st hideChest(char nivel[][13])
+{
+    int i;
+    int j;
+    ponto_st pos;
+    for (i = 0; i < 11; i++)
+    {
+        for (j = 0; j < 13; j++)
+        {
+            if (nivel[i][j] == 'T')
+            {
+                pos.x = i;
+                pos.y = j;
+                nivel[i][j] = ' ';
+            }
+        }
+    }
+    return pos;
+}
+
+//coloca o bau na posicao
+void spawnChest(ponto_st pos, char nivel[][13])
+{
+    nivel[pos.x][pos.y]='T';
+}
 //carrega o nivel de um arquivo txt
 
 ponto_st loadLevel(char nivel[][13], char arquivo[20])
@@ -58,22 +87,24 @@ ponto_st loadLevel(char nivel[][13], char arquivo[20])
     return player;
 }
 
- char * chooseLevel(int levelNumber)
+//escolhe o arquivo do nivel
+char *chooseLevel(int levelNumber)
 {
     static char nivel[11];
     switch (levelNumber)
     {
     case 1:
-        strcpy(nivel,"nivel1.txt");
+        strcpy(nivel, "nivel1.txt");
         break;
 
     case 2:
-        strcpy(nivel,"nivel2.txt");
+        strcpy(nivel, "nivel2.txt");
         break;
 
     case 3:
-        strcpy(nivel,"nivel3.txt");
+        strcpy(nivel, "nivel3.txt");
         break;
     }
     return nivel;
 }
+#endif

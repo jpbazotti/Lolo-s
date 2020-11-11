@@ -1,10 +1,12 @@
 #include "nivel.h"
 #include "gravacao.h"
+//definicao do player
 typedef struct
 {
     ponto_st posicao;
     int coracoes;
 } player_st;
+//logica de movimentacao da caixa
 int moveBox(char nivel[][13], ponto_st pos, char key)
 {
     int movePossible = 0;
@@ -46,7 +48,7 @@ int moveBox(char nivel[][13], ponto_st pos, char key)
     }
     return movePossible;
 }
-
+//logica de colisao e movimentacao do player
 player_st movePlayer(char nivel[][13], player_st p, char key, gravacao *save, int pInicial)
 {
     player_st jogador = p;
