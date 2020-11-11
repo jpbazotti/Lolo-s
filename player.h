@@ -134,8 +134,8 @@ player_st movePlayer(char nivel[][13], player_st p, char key, gravacao *save, in
     else if (nivel[novaPos.y][novaPos.x] == 'T')
     {
         (*save).ultimafase++;
-        jogador.posicao.x = -2;
-        jogador.posicao.y = -2;
+        jogador.posicao.x = -3;
+        jogador.posicao.y = -3;
         jogador.coracoes=0;
     }
     else if (nivel[novaPos.y][novaPos.x] != 'P')

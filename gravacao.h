@@ -43,12 +43,12 @@ int getLast()
 	return pos+1;
 }
 //imprime os saves para selecao
-void printSave()
-{
+int printSave()
+{	int opSuccess=0;
     FILE *file;
     if (!(file = fopen("save.bin", "rb")))
     {
-        printf("Erro na abertura do arquivo para leitura");
+        printf("Nao ha saves, por favor crie um novo jogo");
     }
     else
     {
@@ -61,8 +61,10 @@ void printSave()
                 printf("%d-Jogador:%s Nivel:%d\n", buffer.id,buffer.nomejogador,buffer.ultimafase);
             }
         }
+		opSuccess=1;
         fclose(file);
     }
+	return opSuccess;
 }
 
 
@@ -73,9 +75,14 @@ gravacao getSave(int pos){
 	if(!(file = fopen("save.bin","rb"))){
 		printf("Nao ha save file! Pressione um botao para continuar\n");
 	}else{
+	if(pos>0 && (pos)<getLast()){
 	fseek(file, (pos-1)*sizeof(gravacao),SEEK_SET);
 	if(fread(&save, sizeof(gravacao), 1, file) == 1){
 		printf("Iniciando Jogo\n");
+	}
+	}else{
+	printf("Save nao encontrado");
+	save.id=-1;	
 	}
 	fclose(file);
 	}

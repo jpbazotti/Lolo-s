@@ -47,13 +47,30 @@ int main()
                 //seta gamestate para o save
             case '2':
                 cls();
-                printf("Escolha um save:\n");
-                printSave();
-                showcursor();
-                scanf("%d", &saveChoice);
-                gameState = getSave(saveChoice);
-                hidecursor();
-                game = 1;
+                printf("Escolha um save(digite e aperte enter):\n");
+                if (printSave())
+                {
+                    showcursor();
+                    scanf("%d", &saveChoice);
+                    gameState = getSave(saveChoice);
+                    hidecursor();
+                    if (gameState.id != -1)
+                    {
+                        game = 1;
+                    }
+                    else
+                    {
+                        anykey("\nPressione qualquer tecla para voltar");
+                        cls();
+                        printMenu();
+                    }
+                }
+                else
+                {
+                    anykey("\nPressione qualquer tecla para voltar");
+                    cls();
+                    printMenu();
+                }
                 break;
             case '3':
                 cls();
@@ -106,11 +123,16 @@ int main()
                     {
                         game = 0;
                         loaded = 0;
+                        cls();
                         if (gameState.vidas == 0)
                         {
                             gameState.vidas = 3;
                             gameState.totalpts = 0;
                             gameState.ultimafase = 1;
+
+                            printf("Voce perdeu todas as vidas, GAME OVER, de volta ao nivel 1!");
+                            anykey("\nPressione qualquer tecla para continuar");
+                            cls();
                         }
                         changeSave(gameState);
                         cls();
@@ -118,8 +140,27 @@ int main()
                     }
                     if (jogador.posicao.x == -2)
                     {
+                        cls();
+                        printf("Voce perdeu uma vida, tome mais cuidado!");
+                        anykey("\nPressione qualquer tecla para continuar");
                         loaded = 0;
                         cls();
+                    }else if(jogador.posicao.x == -3&&gameState.ultimafase!=4){
+                        cls();
+                        printf("Voce passou de nivel!");
+                        anykey("\nPressione qualquer tecla para continuar e salvar");
+                        loaded = 0;
+                        cls();
+                    }
+                    if (gameState.ultimafase == 4)
+                    {
+                        game = 0;
+                        loaded = 0;
+                        cls();
+                        printf("Voce ganhou!");
+                        anykey("\nPressione qualquer tecla para voltar ao menu");
+                        cls();
+                        printMenu();
                     }
                 }
             }

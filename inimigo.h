@@ -55,19 +55,15 @@ void moveEnemies(char nivel[][13])
 	srand(time(NULL));
 	enemy *enemies=malloc((sizeof(enemy))*(enemiesLeft(nivel)));
 	getEnemies(nivel,enemies);
-	printf("%d %d\n",enemies[0].posicao.x,enemies[0].movimento);
-	printf("%d %d\n",enemies[1].posicao.x,enemies[1].movimento);
 	int qtd = ((sizeof(enemy))*(enemiesLeft(nivel))) / (sizeof(enemy));
 	int i = 0;
 	int move = 0;
 	ponto_st novaPos;
-	printf("\n%d\n",qtd);
 	for (i = 0; i < qtd; i++)
 	{
 		if (enemies[i].movimento == 1)
 		{
 			move = rand() % 4;
-			printf("%d",move);
 			enemies[i].movimento = 0;
 			if (move == 0)
 			{

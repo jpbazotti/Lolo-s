@@ -1,1 +1,1 @@
-                    changeSave(gameState);
+cls();
