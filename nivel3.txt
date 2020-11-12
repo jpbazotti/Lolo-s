@@ -7,5 +7,5 @@ PAAA  E  ACAP
 P         PPP
 PPP       PPP
 PCCB     BCCP
-P  B  @  B  P
+PP B  @  B PP
 PPPPPPPPPPPPP
