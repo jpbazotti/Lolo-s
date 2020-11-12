@@ -71,7 +71,6 @@ void moveEnemies(char nivel[][13])
 		if ((nivel[x+1][y]!=' ')&&(nivel[x-1][y]!=' ')&&(nivel[x][y+1]!=' ')&&(nivel[x][y-1]!=' '))
 		{
 			freeSpace=0;
-			printf("?");
 		}
 		if (enemies[i].movimento==1 && freeSpace==1)
 		{
