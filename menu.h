@@ -26,4 +26,3 @@ void printInterface(int vidas, int pontos, int nivel, int coracoes){
      printf("|Vidas: %2d  Coracoes: %2d  Pontos: %3d  Nivel:%2d |\n",vidas,coracoes,pontos,nivel);
      printf("=================================================\n");
 }
-//char nome[], int id

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "nivel.h"
-//struc gravacao
+//struct do inimigo
 typedef struct
 {
 	int vida;

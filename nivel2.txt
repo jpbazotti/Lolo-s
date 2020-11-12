@@ -1,11 +1,11 @@
 PPPPPPPPPPPPP
-P           P
 P     @     P
-P           P
-P           P
-P    A      P
-P           P
-P           P
-P      T    P
-P           P
+PA AAATAAA AP
+P  A EBEEA  P
+P  A     A  P
+P  A     A AP
+P CA     ABAP
+PAAA     B  P
+P        B  P
+P C   B  AC P
 PPPPPPPPPPPPP
